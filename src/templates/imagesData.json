@@ -1,5 +1,5 @@
 {
-  "images": {
+  "image": {
     "base_url": "http://image.tmdb.org/t/p/",
     "secure_base_url": "https://image.tmdb.org/t/p/",
     "backdrop_sizes": ["w300", "w780", "w1280", "original"],
@@ -31,7 +31,7 @@
     "genres",
     "guest_stars",
     "homepage",
-    "images",
+    "image",
     "imdb_id",
     "languages",
     "name",

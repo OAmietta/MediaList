@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 // import { services } from "./api/services";
-import { getImagesData, getMediaList, selectMedias } from "./app/mediasSlice";
+import { getImageData, getMediaList, selectMedias } from "./app/mediasSlice";
 // import { Medias } from "./utils/interfaces";
 import mediaList from "./templates/mediaList.json";
 import imagesData from "./templates/imagesData.json";
@@ -34,7 +34,7 @@ export default function App() {
     //   .catch((error) => {
     //     console.log("error: ", error);
     //   });
-    dispatch(getImagesData(imagesData.images));
+    dispatch(getImageData(imagesData.image));
     dispatch(getMediaList(mediaList.results));
   };
 
