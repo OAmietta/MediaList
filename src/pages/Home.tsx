@@ -1,5 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
+import EmblaCarousel from "../components/EmblaCarousel";
+import { EmblaOptionsType } from "embla-carousel";
+import { useAppSelector } from "../app/hooks";
+// import { services } from "./api/services";
+import { selectMedias } from "../app/mediasSlice";
 
-export default function Home() {
-  return <div>Home</div>;
-}
+const Home: React.FC = () => {
+  const medias = useAppSelector(selectMedias);
+
+  useEffect(() => {
+    console.log("medias: ", medias);
+  }, [medias]);
+
+  const OPTIONS: EmblaOptionsType = { dragFree: false, loop: false };
+  const SLIDE_COUNT = medias.mediaList.length;
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
+  const DATA = medias.mediaList;
+
+  return (
+    <div className="flex flex-col justify-center items-center text-center h-screen">
+      <div className="">
+        <h1 className="text-3xl m-4">MEDIALIST</h1>
+
+        <EmblaCarousel slides={SLIDES} options={OPTIONS} data={DATA} />
+      </div>
+    </div>
+  );
+};
+
+export default Home;

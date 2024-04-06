@@ -39,9 +39,9 @@ export default function App() {
   };
 
   return (
-    <div>
-      <p>{JSON.stringify(medias)}</p>
+    <div className="">
       <Home />
+      {/* <p>{JSON.stringify(medias)}</p> */}
     </div>
   );
 }
