@@ -31,10 +31,7 @@ code {
 .embla {
   max-width: 48rem;
   margin: auto;
-  margin-top: 100px;
-  --slide-height: 29rem;
   --slide-spacing: 1rem;
-  --slide-size: 80%;
 }
 .embla__viewport {
   overflow: hidden;
@@ -46,15 +43,27 @@ code {
   margin-left: calc(var(--slide-spacing) * -1);
 }
 .embla__slide {
-  flex: 0 0 var(--slide-size);
   min-width: 0;
   padding-left: var(--slide-spacing);
   cursor: pointer;
 }
+
+.HOME {
+  flex: 0 0 80%;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.DETAILS {
+  flex: 0 0 40%;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
 .embla__slide__img {
   border-radius: 1rem;
   display: block;
-  height: var(--slide-height);
+  /* height: var(--slide-height); */
   width: 100%;
   object-fit: cover;
   object-position: center;
