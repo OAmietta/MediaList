@@ -9,6 +9,7 @@ import imagesData from "./templates/imagesData.json";
 import Home from "./pages/Home";
 import Navbar from "./components/NavBar";
 import Details from "./pages/Details";
+import Footer from "./components/Footer";
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="details/:id" element={<Details />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

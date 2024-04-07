@@ -6,7 +6,6 @@ import { useAppSelector } from "../app/hooks";
 import { selectMedias } from "../app/mediasSlice";
 import { useParams } from "react-router-dom";
 import { DETAILS } from "../utils/constants";
-import Footer from "../components/Footer";
 
 const Details: React.FC = () => {
   const medias = useAppSelector(selectMedias);
@@ -51,7 +50,7 @@ const Details: React.FC = () => {
       </div>
       <div>
         <h1 className="text-2xl text-left m-6 font-semibold">SIMILAR ONES</h1>
-        <section className="mb-4">
+        <section className="mb-6">
           <EmblaCarousel
             slides={SLIDES}
             options={OPTIONS}
@@ -60,7 +59,6 @@ const Details: React.FC = () => {
           />
         </section>
       </div>
-      <Footer />
     </div>
   );
 };
