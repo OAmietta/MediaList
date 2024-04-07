@@ -6,6 +6,7 @@ import { getImageData, getMediaList, selectMedias } from "./app/mediasSlice";
 import mediaList from "./templates/mediaList.json";
 import imagesData from "./templates/imagesData.json";
 import Home from "./pages/Home";
+import Navbar from "./components/NavBar";
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -40,6 +41,7 @@ export default function App() {
 
   return (
     <div className="">
+      <Navbar />
       <Home />
       {/* <p>{JSON.stringify(medias)}</p> */}
     </div>

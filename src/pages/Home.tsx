@@ -18,10 +18,8 @@ const Home: React.FC = () => {
   const DATA = medias.mediaList;
 
   return (
-    <div className="flex flex-col justify-center items-center text-center h-screen">
+    <div className="flex flex-col justify-center items-center text-center h-screen max-w-screen-md bg-gradient">
       <div className="">
-        <h1 className="text-3xl m-4">MEDIALIST</h1>
-
         <EmblaCarousel slides={SLIDES} options={OPTIONS} data={DATA} />
       </div>
     </div>
