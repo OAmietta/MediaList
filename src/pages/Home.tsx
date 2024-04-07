@@ -4,6 +4,7 @@ import { EmblaOptionsType } from "embla-carousel";
 import { useAppSelector } from "../app/hooks";
 // import { services } from "./api/services";
 import { selectMedias } from "../app/mediasSlice";
+import { HOME } from "../utils/constants";
 
 const Home: React.FC = () => {
   const medias = useAppSelector(selectMedias);
@@ -12,16 +13,22 @@ const Home: React.FC = () => {
     console.log("medias: ", medias);
   }, [medias]);
 
-  const OPTIONS: EmblaOptionsType = { dragFree: false, loop: false };
+  const OPTIONS: EmblaOptionsType = { dragFree: false, loop: true };
   const SLIDE_COUNT = medias.mediaList.length;
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
   const DATA = medias.mediaList;
 
   return (
-    <div className="flex flex-col justify-center items-center text-center h-screen max-w-screen-md bg-gradient">
-      <div className="">
-        <EmblaCarousel slides={SLIDES} options={OPTIONS} data={DATA} />
-      </div>
+    <div className="flex flex-col justify-center items-center text-center max-w-screen-md bg-gradient">
+      {/* <h1 className="text-3xl text-left pl-6 font-bold w-full">TRENDING</h1> */}
+      <section className="flex sm:h-[76vh] h-screen sm:mt-[6rem] mt-0">
+        <EmblaCarousel
+          slides={SLIDES}
+          options={OPTIONS}
+          data={DATA}
+          type={HOME}
+        />
+      </section>
     </div>
   );
 };
