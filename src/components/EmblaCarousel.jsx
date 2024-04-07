@@ -7,6 +7,7 @@ import {
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
 import { Star, ThumbUp } from "../utils/icons";
+import { Link } from "react-router-dom";
 // import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
 
 const TWEEN_FACTOR_BASE = 0.2;
@@ -95,7 +96,8 @@ const EmblaCarousel = (props) => {
           {data.length > 0 &&
             slides.map((index) => {
               return (
-                <a
+                <Link
+                  to={`/details/${data[index].id}`}
                   className="embla__slide"
                   key={data[index].id}
                   onClick={() => console.log("click")}
@@ -113,10 +115,10 @@ const EmblaCarousel = (props) => {
                         className="embla__slide__img embla__parallax__img"
                         // src={`https://picsum.photos/600/350?v=${index}`}
                         src={`https://image.tmdb.org/t/p/w780/${data[index].backdrop_path}`}
-                        alt="Your alt text"
+                        alt="Background"
                       />
                     </div>
-                    <div className="absolute bottom-0 flex align-middle items-center bg-zinc-950 bg-opacity-90 min-w-[15%] min-h-10 h-auto justify-center rounded-tr-lg rounded-bl-lg">
+                    <div className="absolute bottom-0 flex align-middle items-center bg-zinc-950 bg-opacity-90 min-w-[15%] min-h-10 h-auto justify-center rounded-tr-[1rem] rounded-bl-[1rem]">
                       <Star className={"min-h-5 max-h-5 m-2 text-yellow-300"} />
                       <p className=" text-xl text-zinc-200 font-normal">
                         {data[index].vote_average.toFixed(2) + "%"}
@@ -129,7 +131,7 @@ const EmblaCarousel = (props) => {
                       </p>
                     </div>
                   </div>
-                </a>
+                </Link>
               );
             })}
         </div>

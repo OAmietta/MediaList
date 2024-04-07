@@ -2,15 +2,17 @@ import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 // import { services } from "./api/services";
 import { getImageData, getMediaList, selectMedias } from "./app/mediasSlice";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { Medias } from "./utils/interfaces";
 import mediaList from "./templates/mediaList.json";
 import imagesData from "./templates/imagesData.json";
 import Home from "./pages/Home";
 import Navbar from "./components/NavBar";
+import Details from "./pages/Details";
 
 export default function App() {
   const dispatch = useAppDispatch();
-  const medias = useAppSelector(selectMedias);
+  // const medias = useAppSelector(selectMedias);
 
   useEffect(() => {
     handleData();
@@ -21,6 +23,7 @@ export default function App() {
     //   .getInitialData()
     //   .then((res) => {
     //     console.log("response app: ", res);
+    // dispatch(getImageData(imagesData.image));
     //   })
     //   .catch((error) => {
     //     console.log("error: ", error);
@@ -40,10 +43,14 @@ export default function App() {
   };
 
   return (
-    <div className="">
-      <Navbar />
-      <Home />
-      {/* <p>{JSON.stringify(medias)}</p> */}
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="details/:id" element={<Details />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
