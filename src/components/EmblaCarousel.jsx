@@ -92,12 +92,12 @@ const EmblaCarousel = (props) => {
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((index) => {
-            return (
-              <>
+          {data.length > 0 &&
+            slides.map((index) => {
+              return (
                 <a
                   className="embla__slide"
-                  key={index}
+                  key={data[index].id}
                   onClick={() => console.log("click")}
                 >
                   <div className="embla__parallax">
@@ -116,7 +116,7 @@ const EmblaCarousel = (props) => {
                         alt="Your alt text"
                       />
                     </div>
-                    <div className="absolute bottom-0 flex align-middle items-center bg-zinc-950 bg-opacity-90 min-w-[15%] min-h-10 h-auto justify-center rounded-tr-lg">
+                    <div className="absolute bottom-0 flex align-middle items-center bg-zinc-950 bg-opacity-90 min-w-[15%] min-h-10 h-auto justify-center rounded-tr-lg rounded-bl-lg">
                       <Star className={"min-h-5 max-h-5 m-2 text-yellow-300"} />
                       <p className=" text-xl text-zinc-200 font-normal">
                         {data[index].vote_average.toFixed(2) + "%"}
@@ -130,9 +130,8 @@ const EmblaCarousel = (props) => {
                     </div>
                   </div>
                 </a>
-              </>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
 
@@ -141,18 +140,6 @@ const EmblaCarousel = (props) => {
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
-
-        {/* <div className="embla__dots">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={"embla__dot".concat(
-                index === selectedIndex ? " embla__dot--selected" : ""
-              )}
-            />
-          ))}
-        </div> */}
       </div>
     </div>
   );
