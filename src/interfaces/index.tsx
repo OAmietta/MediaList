@@ -25,5 +25,17 @@ export interface Image {
 
 export interface Medias {
   mediaList: MediaList[];
+  similarMediaList: MediaList[];
   image: Image;
+  searchItem: boolean;
+  loading: boolean;
+}
+
+export interface MediaParams {
+  mediaType: string;
+  id: number;
+}
+
+export interface ResponseMedia {
+  results: MediaList[];
 }
