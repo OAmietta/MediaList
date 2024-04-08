@@ -15,6 +15,7 @@ const initialState: Medias = {
   mediaList: [],
   similarMediaList: [],
   searchItem: true,
+  loading: true,
 };
 
 export const mediasSlice = createSlice({
@@ -33,6 +34,9 @@ export const mediasSlice = createSlice({
     setSearchItem: (state, action) => {
       state.searchItem = action.payload;
     },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
 });
 
@@ -44,6 +48,7 @@ export const {
   getMediaList,
   getSimilarMediaList,
   setSearchItem,
+  setLoading,
 } = mediasSlice.actions;
 // export reducer for register it to the store
 export default mediasSlice.reducer;

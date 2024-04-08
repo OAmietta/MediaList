@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/NavBar";
 import Details from "./pages/Details";
 import Footer from "./components/Footer";
-import { Image, MediaList } from "./interfaces";
+// import Spinner from "./components/Spinner";
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -43,6 +43,10 @@ export default function App() {
     dispatch(getImageData(imagesData.image));
     dispatch(getMediaList(mediaList.results));
   };
+
+  // if (medias.loading) {
+  //   return <Spinner />;
+  // }
 
   return (
     <>

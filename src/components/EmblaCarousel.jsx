@@ -94,7 +94,10 @@ const EmblaCarousel = (props) => {
   }, [emblaApi, tweenParallax]);
 
   const handleClick = () => {
-    console.log("search item true");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     dispatch(setSearchItem(true));
   };
 
@@ -119,7 +122,7 @@ const EmblaCarousel = (props) => {
                     <div className="embla__parallax__layer">
                       <div
                         className={`absolute top-0 flex align-middle items-center bg-zinc-950 bg-opacity-50 min-h-16 justify-center truncate text-wrap rounded-t-[1rem]
-                      ${origin == HOME ? "w-[110%]" : "sm:w-[126] w-[130%]"}`}
+                      ${origin == HOME ? "w-[110%]" : "sm:w-[126] w-[120%]"}`}
                       >
                         <h1
                           className={`${origin}text-zinc-200 font-semibold mx-6`}
@@ -135,12 +138,13 @@ const EmblaCarousel = (props) => {
                         }`}
                         src={`${
                           backdropPath != null
-                            ? `https://image.tmdb.org/t/p/original/${backdropPath}`
+                            ? `https://image.tmdb.org/t/p/w780/${backdropPath}`
                             : posterPath != null
-                            ? `https://image.tmdb.org/t/p/original/${posterPath}`
-                            : "https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg"
+                            ? `https://image.tmdb.org/t/p/w780/${posterPath}`
+                            : "https://www.tigren.com/blog/wp-content/uploads/2021/10/404-error-page-not-found-magento.jpg"
                         }`}
                         alt="Background"
+                        rel="preload"
                       />
                     </div>
                     {origin == HOME && (

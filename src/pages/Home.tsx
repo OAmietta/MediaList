@@ -9,10 +9,6 @@ import { HOME } from "../utils/constants";
 const Home: React.FC = () => {
   const medias = useAppSelector(selectMedias);
 
-  useEffect(() => {
-    console.log("medias: ", medias);
-  }, [medias]);
-
   const OPTIONS: EmblaOptionsType = { dragFree: false, loop: true };
   const SLIDE_COUNT = medias.mediaList.length;
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
@@ -20,7 +16,6 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-center items-center text-center max-w-screen-md bg-gradient">
-      {/* <h1 className="text-3xl text-left pl-6 font-bold w-full">TRENDING</h1> */}
       <section className="flex sm:h-[76vh] h-screen sm:mt-[6rem] mt-0">
         <EmblaCarousel
           slides={SLIDES}

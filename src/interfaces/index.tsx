@@ -28,6 +28,7 @@ export interface Medias {
   similarMediaList: MediaList[];
   image: Image;
   searchItem: boolean;
+  loading: boolean;
 }
 
 export interface MediaParams {
