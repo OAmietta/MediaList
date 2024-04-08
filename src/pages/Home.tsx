@@ -26,7 +26,7 @@ const Home: React.FC = () => {
           slides={SLIDES}
           options={OPTIONS}
           data={DATA}
-          type={HOME}
+          origin={HOME}
         />
       </section>
     </div>

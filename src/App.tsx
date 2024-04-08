@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/NavBar";
 import Details from "./pages/Details";
 import Footer from "./components/Footer";
+import { Image, MediaList } from "./interfaces";
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -22,21 +23,21 @@ export default function App() {
   const handleData = () => {
     // services
     //   .getInitialData()
-    //   .then((res) => {
+    //   .then((res: Image) => {
     //     console.log("response app: ", res);
     // dispatch(getImageData(imagesData.image));
     //   })
-    //   .catch((error) => {
+    //   .catch((error: Error) => {
     //     console.log("error: ", error);
     //   });
 
     // services
     //   .getList()
-    //   .then((res) => {
+    //   .then((res: MediaList) => {
     //     console.log("response app: ", res);
     //     dispatch(getMediaList(res));
     //   })
-    //   .catch((error) => {
+    //   .catch((error: Error) => {
     //     console.log("error: ", error);
     //   });
     dispatch(getImageData(imagesData.image));
@@ -49,7 +50,7 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="details/:id" element={<Details />} />
+          <Route path="details/:type/:id" element={<Details />} />
         </Routes>
         <Footer />
       </BrowserRouter>

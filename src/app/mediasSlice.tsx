@@ -13,6 +13,8 @@ const initialState: Medias = {
     still_sizes: [],
   },
   mediaList: [],
+  similarMediaList: [],
+  searchItem: true,
 };
 
 export const mediasSlice = createSlice({
@@ -25,12 +27,23 @@ export const mediasSlice = createSlice({
     getMediaList: (state, action) => {
       state.mediaList = action.payload;
     },
+    getSimilarMediaList: (state, action) => {
+      state.similarMediaList = action.payload;
+    },
+    setSearchItem: (state, action) => {
+      state.searchItem = action.payload;
+    },
   },
 });
 
 // export state selector
 export const selectMedias = (state: RootState) => state.medias;
 // export dispatch actions
-export const { getImageData, getMediaList } = mediasSlice.actions;
+export const {
+  getImageData,
+  getMediaList,
+  getSimilarMediaList,
+  setSearchItem,
+} = mediasSlice.actions;
 // export reducer for register it to the store
 export default mediasSlice.reducer;

@@ -1,4 +1,7 @@
 // import pjson from "../../package.json";
+
+import { MediaParams } from "../interfaces";
+
 const options = {
   method: "GET",
   headers: {
@@ -28,19 +31,29 @@ export const services = {
       .catch((err) => console.error(err));
     return res;
   },
-  //   getId: async (dni: number) => {
-  //     const res = await fetch(
-  //       `${pjson.apiUrl}/ws_sr_padron_a13/getIdListByDocumento?documento=${dni}`,
-  //       {
-  //         method: "GET",
-  //         headers: new Headers({
-  //           Authorization: `Apikey ${pjson.apiKey}`,
-  //         }),
-  //       }
-  //     );
-  //     if (res.status == 500) {
-  //       throw new Error("Ha ocurrido un error en el servidor.");
-  //     }
-  //     return await res.json();
-  //   },
+  getSimilarMedia: async (
+    mediaType: MediaParams["mediaType"],
+    id: MediaParams["id"]
+  ) => {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/${mediaType}/${id}/similar?language=en-US&page=1`,
+      options
+    )
+      .then((response) => response.json())
+      .catch((err) => console.error(err));
+    return res;
+  },
+
+  getMediaItem: async (
+    mediaType: MediaParams["mediaType"],
+    id: MediaParams["id"]
+  ) => {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/${mediaType}/${id}`,
+      options
+    )
+      .then((response) => response.json())
+      .catch((err) => console.error(err));
+    return res;
+  },
 };

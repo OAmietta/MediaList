@@ -9,15 +9,18 @@ import {
 import { Star, ThumbUp } from "../utils/icons";
 import { Link } from "react-router-dom";
 import { HOME } from "../utils/constants";
+import { useAppDispatch } from "../app/hooks";
+import { setSearchItem } from "../app/mediasSlice";
 // import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
 
 const TWEEN_FACTOR_BASE = 0.2;
 
 const EmblaCarousel = (props) => {
-  const { slides, options, data, type } = props;
+  const { slides, options, data, origin, type } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const tweenFactor = useRef(0);
   const tweenNodes = useRef([]);
+  const dispatch = useAppDispatch();
 
   // const { selectedIndex, scrollSnaps, onDotButtonClick } =
   //   useDotButton(emblaApi);
@@ -90,27 +93,36 @@ const EmblaCarousel = (props) => {
       .on("scroll", tweenParallax);
   }, [emblaApi, tweenParallax]);
 
+  const handleClick = () => {
+    console.log("search item true");
+    dispatch(setSearchItem(true));
+  };
+
   return (
-    <div className={`embla ${type == HOME && "sm:pt-0 pt-[100px]"}`}>
+    <div className={`embla ${origin == HOME && "sm:pt-0 pt-[100px]"}`}>
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {data.length > 0 &&
-            slides.map((index) => {
+            slides?.map((index) => {
+              const backdropPath = data[index].backdrop_path;
+              const posterPath = data[index].poster_path;
               return (
                 <Link
-                  to={`/details/${data[index].id}`}
-                  className={`embla__slide ${type}`}
+                  to={`/details/${data[index].media_type ?? type}/${
+                    data[index].id
+                  }`}
+                  className={`embla__slide ${origin}`}
                   key={data[index].id}
-                  onClick={() => console.log("click")}
+                  onClick={() => handleClick()}
                 >
                   <div className="embla__parallax">
                     <div className="embla__parallax__layer">
                       <div
                         className={`absolute top-0 flex align-middle items-center bg-zinc-950 bg-opacity-50 min-h-16 justify-center truncate text-wrap rounded-t-[1rem]
-                      ${type == HOME ? "w-[110%]" : "sm:w-[126] w-[130%]"}`}
+                      ${origin == HOME ? "w-[110%]" : "sm:w-[126] w-[130%]"}`}
                       >
                         <h1
-                          className={`${type}text-zinc-200 font-semibold mx-6`}
+                          className={`${origin}text-zinc-200 font-semibold mx-6`}
                         >
                           {data[index].title != undefined
                             ? data[index].title.toUpperCase()
@@ -119,13 +131,19 @@ const EmblaCarousel = (props) => {
                       </div>
                       <img
                         className={`embla__slide__img embla__parallax__img ${
-                          type == HOME ? "h-[29rem]" : "h-[15rem]"
+                          origin == HOME ? "h-[29rem]" : "h-[15rem]"
                         }`}
-                        src={`https://image.tmdb.org/t/p/original/${data[index].backdrop_path}`}
+                        src={`${
+                          backdropPath != null
+                            ? `https://image.tmdb.org/t/p/original/${backdropPath}`
+                            : posterPath != null
+                            ? `https://image.tmdb.org/t/p/original/${posterPath}`
+                            : "https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg"
+                        }`}
                         alt="Background"
                       />
                     </div>
-                    {type == HOME && (
+                    {origin == HOME && (
                       <div className="absolute bottom-0 flex align-middle items-center bg-zinc-950 bg-opacity-90 min-w-[15%] min-h-10 h-auto justify-center rounded-tr-[1rem] rounded-bl-[1rem]">
                         <Star
                           className={
@@ -134,7 +152,7 @@ const EmblaCarousel = (props) => {
                         />
                         <p
                           className={`${
-                            type == HOME ? "text-base" : "sm:text-sm text-xs"
+                            origin == HOME ? "text-base" : "sm:text-sm text-xs"
                           }  text-zinc-200 font-normal`}
                         >
                           {data[index].vote_average.toFixed(2) + "%"}
@@ -146,7 +164,7 @@ const EmblaCarousel = (props) => {
                         />
                         <p
                           className={`${
-                            type == HOME
+                            origin == HOME
                               ? "text-base"
                               : "sm:text-sm text-xs sm:rounded-br-[1rem]"
                           }  text-zinc-200 font-normal mr-4`}
@@ -161,7 +179,7 @@ const EmblaCarousel = (props) => {
             })}
         </div>
       </div>
-      {type == HOME && (
+      {origin == HOME && (
         <div className="embla__controls">
           <div className="embla__buttons px-4">
             <PrevButton
