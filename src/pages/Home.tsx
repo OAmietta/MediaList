@@ -16,7 +16,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-center items-center text-center max-w-screen-md bg-gradient">
-      <section className="flex sm:h-[76vh] h-screen sm:mt-[6rem] mt-0">
+      <section className="flex sm:h-[76vh] h-screen sm:mt-[7rem] mt-0">
         <EmblaCarousel
           slides={SLIDES}
           options={OPTIONS}
