@@ -6,11 +6,11 @@ import {
   PrevButton,
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
-import { Star, ThumbUp } from "../utils/icons";
+import { Star, ThumbUp } from "../../utils/icons";
 import { Link } from "react-router-dom";
-import { HOME } from "../utils/constants";
-import { useAppDispatch } from "../app/hooks";
-import { setSearchItem } from "../app/mediasSlice";
+import { HOME } from "../../utils/constants";
+import { useAppDispatch } from "../../app/hooks";
+import { setSearchItem } from "../../app/mediasSlice";
 
 const TWEEN_FACTOR_BASE = 0.2;
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import EmblaCarousel from "../components/EmblaCarousel";
+import EmblaCarousel from "../components/carousel/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import { useAppSelector } from "../app/hooks";
 // import { services } from "./api/services";

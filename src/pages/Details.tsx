@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import EmblaCarousel from "../components/EmblaCarousel";
+import EmblaCarousel from "../components/carousel/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import { services } from "../api/services";
 import { useParams } from "react-router-dom";
@@ -13,7 +13,7 @@ import {
   setSearchItem,
   setLoading,
 } from "../app/mediasSlice";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/spinner/Spinner";
 
 const Details: React.FC = () => {
   const { type, id } = useParams();
