@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { HOME } from "../../utils/constants";
 import { useAppDispatch } from "../../app/hooks";
 import { setSearchItem } from "../../app/mediasSlice";
+import "./index.css";
 
 const TWEEN_FACTOR_BASE = 0.2;
 
@@ -138,9 +139,9 @@ const EmblaCarousel = (props) => {
                         }`}
                         src={`${
                           backdropPath != null
-                            ? `https://image.tmdb.org/t/p/w780/${backdropPath}`
+                            ? `https://image.tmdb.org/t/p/original/${backdropPath}`
                             : posterPath != null
-                            ? `https://image.tmdb.org/t/p/w780/${posterPath}`
+                            ? `https://image.tmdb.org/t/p/original/${posterPath}`
                             : "https://www.tigren.com/blog/wp-content/uploads/2021/10/404-error-page-not-found-magento.jpg"
                         }`}
                         alt="Background"
