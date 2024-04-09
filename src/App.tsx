@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useAppDispatch } from "./app/hooks";
 import { services } from "./api/services";
-import { getImageData, getMediaList } from "./app/mediasSlice";
+import { getImageData, getMediaList, setLoading } from "./app/mediasSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/NavBar";
@@ -17,10 +17,10 @@ export default function App() {
   }, []);
 
   const handleData = () => {
+    dispatch(setLoading(true));
     services
       .getInitialData()
       .then((res: Image) => {
-        console.log("response app: ", res);
         dispatch(getImageData(res));
       })
       .catch((error: Error) => {
@@ -30,8 +30,8 @@ export default function App() {
     services
       .getList()
       .then((res: MediaList) => {
-        console.log("response app: ", res);
         dispatch(getMediaList(res));
+        dispatch(setLoading(false));
       })
       .catch((error: Error) => {
         throw new Error("error", error);

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Back } from "../utils/icons";
 import { setSearchItem } from "../app/mediasSlice";
 import { useAppDispatch } from "../app/hooks";
@@ -27,13 +27,19 @@ const Navbar: React.FC = () => {
         }
       />
       <div>
-        <a href="/" style={{ textDecoration: "none" }}>
+        <Link
+          to="/"
+          onClick={() => {
+            dispatch(setSearchItem(true));
+          }}
+          style={{ textDecoration: "none" }}
+        >
           <h1
             className={`w-full text-3xl font-bold text-[#00df9a] duration-300 hover:scale-110`}
           >
             :MEDIALIST:
           </h1>
-        </a>
+        </Link>
       </div>
     </div>
   );

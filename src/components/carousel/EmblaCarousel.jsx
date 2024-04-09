@@ -10,13 +10,13 @@ import { Star, ThumbUp } from "../../utils/icons";
 import { Link } from "react-router-dom";
 import { HOME } from "../../utils/constants";
 import { useAppDispatch } from "../../app/hooks";
-import { setSearchItem } from "../../app/mediasSlice";
+import { setLoading, setSearchItem } from "../../app/mediasSlice";
 import "./index.css";
 
 const TWEEN_FACTOR_BASE = 0.2;
 
 const EmblaCarousel = (props) => {
-  const { slides, options, data, origin, type } = props;
+  const { slides, options, data, origin, type, imgDetails } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const tweenFactor = useRef(0);
   const tweenNodes = useRef([]);
@@ -75,6 +75,20 @@ const EmblaCarousel = (props) => {
       });
     });
   }, []);
+
+  let posterSize = "";
+  let backdropSize = "";
+  let baseUrl = "";
+
+  if (imgDetails.images?.poster_sizes.length > 0) {
+    posterSize =
+      imgDetails.images.poster_sizes[imgDetails.images.poster_sizes.length - 1];
+    backdropSize =
+      imgDetails.images.backdrop_sizes[
+        imgDetails.images.backdrop_sizes.length - 1
+      ];
+    baseUrl = imgDetails.images.secure_base_url;
+  }
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -139,9 +153,9 @@ const EmblaCarousel = (props) => {
                         }`}
                         src={`${
                           backdropPath != null
-                            ? `https://image.tmdb.org/t/p/original/${backdropPath}`
+                            ? `${baseUrl}${backdropSize}/${backdropPath}`
                             : posterPath != null
-                            ? `https://image.tmdb.org/t/p/original/${posterPath}`
+                            ? `${baseUrl}${posterSize}/${posterPath}`
                             : "https://www.tigren.com/blog/wp-content/uploads/2021/10/404-error-page-not-found-magento.jpg"
                         }`}
                         alt="Background"

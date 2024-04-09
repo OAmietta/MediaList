@@ -27,7 +27,8 @@ const Details: React.FC = () => {
   const pageData = medias.mediaList.find((item) => item.id.toString() == id);
   const [data, setData] = React.useState(pageData);
 
-  const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true };
+  const options: EmblaOptionsType = { dragFree: true, loop: true };
+  const imgDetails = medias.imageDetails;
 
   useEffect(() => {
     if (medias.searchItem && type != undefined && id != undefined) {
@@ -81,7 +82,7 @@ const Details: React.FC = () => {
             className={`flex mt-[38vh] min-h-[40vh] h-auto bg-[rgba(48,48,48,0.75)] text-left`}
           >
             <div
-              className={`sm:flex hidden ${
+              className={`sm:flex hidden h-[300px] w-[240px] min-w-[240px] ${
                 data?.poster_path == null &&
                 data?.backdrop_path == null &&
                 "sm:invisible"
@@ -116,10 +117,11 @@ const Details: React.FC = () => {
               <section className="mb-6">
                 <EmblaCarousel
                   slides={slides}
-                  options={OPTIONS}
+                  options={options}
                   data={similarData}
                   origin={DETAILS}
                   type={type}
+                  imgDetails={imgDetails}
                 />
               </section>
             </div>

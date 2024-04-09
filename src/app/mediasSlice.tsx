@@ -3,7 +3,7 @@ import { RootState } from "./store";
 import { Medias } from "../interfaces/index";
 
 const initialState: Medias = {
-  image: {
+  imageDetails: {
     base_url: "",
     secure_base_url: "",
     backdrop_sizes: [],
@@ -23,7 +23,7 @@ export const mediasSlice = createSlice({
   initialState, // media state
   reducers: {
     getImageData: (state, action) => {
-      state.image = action.payload;
+      state.imageDetails = action.payload;
     },
     getMediaList: (state, action) => {
       state.mediaList = action.payload;
