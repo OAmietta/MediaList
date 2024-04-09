@@ -30,8 +30,7 @@ export default function useDetails(
       dispatch(setLoading(true));
       services
         .getMediaItem(type, parseInt(id))
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .then((res: any) => {
+        .then((res) => {
           setData(res);
           services
             .getSimilarMedia(type, res.id)
