@@ -2,14 +2,11 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    // <div className="bg-[rgba(0,0,0,0.98)] flex justify-center items-center h-[12vh] sm:min-w-[768px] min-w-[100%] max-w-[768px]">
-    //   @MediaList
-    // </div>
-    <div className="bg-zinc-950 flex justify-around items-center h-[12vh] sm:min-w-[768px] min-w-[100%] max-w-[768px]">
+    <div className="bg-zinc-950 flex justify-around items-center sm:h-[12vh] h-[15vh] sm:min-w-[768px] min-w-[100%] max-w-[768px]">
       <div className="flex justify-center">
         <a
           href="https://www.linkedin.com/in/octavio-amietta-a797431a8/"
-          className="me-6 [&>svg]:h-4 [&>svg]:w-4 duration-300 hover:scale-125"
+          className="me-6 [&>svg]:h-5 [&>svg]:w-5 duration-300 hover:scale-125"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -23,7 +20,7 @@ const Footer: React.FC = () => {
         </a>
         <a
           href="https://github.com/OAmietta/MediaList"
-          className="[&>svg]:h-4 [&>svg]:w-4 duration-300 hover:scale-125"
+          className="[&>svg]:h-5 [&>svg]:w-5 duration-300 hover:scale-125"
           target="_blank"
           rel="noopener noreferrer"
         >

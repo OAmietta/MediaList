@@ -63,29 +63,19 @@ code {
 .embla__slide__img {
   border-radius: 1rem;
   display: block;
-  /* height: var(--slide-height); */
   width: 100%;
   object-fit: cover;
   object-position: center;
   transition: transform 0.5s;
 }
 
-/* .embla__slide__img:hover {
-  transform: scale(1.06);
-} */
-/* .embla__controls {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  justify-content: space-between;
-  gap: 1.2rem;
-  margin-top: 1rem;
-} */
 .embla__buttons {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
   align-items: center;
-  margin-top: 1rem;
+  background-color: rgba(9, 9, 11, 0.349);
+  height: 8vh;
 }
 .embla__button {
   -webkit-tap-highlight-color: rgba(230, 230, 230, 0.5);
@@ -99,7 +89,6 @@ code {
   border: 0;
   padding: 0;
   margin: 0;
-  box-shadow: inset 0 0 0 0.2rem rgb(25, 25, 25);
   width: 3.5rem;
   height: 3.5rem;
   z-index: 1;
@@ -109,13 +98,20 @@ code {
   align-items: center;
   justify-content: center;
 }
+
+.embla__button:hover {
+  transition: 0.3s ease;
+  transform: scale(1.2);
+  background-color: transparent;
+}
+
 .embla__button:disabled {
   color: rgb(192, 192, 192);
 }
 .embla__button__svg {
-  width: 35%;
-  height: 35%;
-  color: rgb(222, 222, 222);
+  width: 65%;
+  height: 65%;
+  color: rgb(255, 255, 255);
 }
 
 .embla__parallax {
@@ -134,5 +130,4 @@ code {
   max-width: none;
   flex: 0 0 calc(115% + (var(--slide-spacing) * 2));
   object-fit: cover;
-  /* object-fit: contain; */
 }
