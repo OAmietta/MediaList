@@ -10,7 +10,7 @@ import { Star, ThumbUp } from "../../utils/icons";
 import { Link } from "react-router-dom";
 import { HOME } from "../../utils/constants";
 import { useAppDispatch } from "../../app/hooks";
-import { setLoading, setSearchItem } from "../../app/mediasSlice";
+import { setSearchItem } from "../../app/mediasSlice";
 import "./index.css";
 
 const TWEEN_FACTOR_BASE = 0.2;

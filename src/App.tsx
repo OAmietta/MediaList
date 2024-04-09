@@ -1,42 +1,17 @@
 import React, { useEffect } from "react";
-import { useAppDispatch } from "./app/hooks";
-import { services } from "./api/services";
-import { getImageData, getMediaList, setLoading } from "./app/mediasSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/NavBar";
 import Details from "./pages/Details";
 import Footer from "./components/Footer";
-import { Image } from "./interfaces";
+import useMedia from "./hooks/useMedia";
 
 export default function App() {
-  const dispatch = useAppDispatch();
+  const { getImageConfig } = useMedia();
 
   useEffect(() => {
-    handleData();
+    getImageConfig();
   }, []);
-
-  const handleData = () => {
-    dispatch(setLoading(true));
-    services
-      .getInitialData()
-      .then((res: Image) => {
-        dispatch(getImageData(res));
-      })
-      .catch((error: Error) => {
-        throw new Error("error", error);
-      });
-
-    services
-      .getList()
-      .then((res: MediaList) => {
-        dispatch(getMediaList(res));
-        dispatch(setLoading(false));
-      })
-      .catch((error: Error) => {
-        throw new Error("error", error);
-      });
-  };
 
   return (
     <>
