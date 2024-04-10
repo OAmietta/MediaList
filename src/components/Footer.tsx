@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <div className="bg-zinc-950 flex justify-around items-center sm:h-[12vh] h-[15vh] sm:min-w-[768px] min-w-[100%] max-w-[768px]">
+    <div className="flex justify-around items-center bg-zinc-950 sm:h-[12vh] h-[15vh] sm:min-w-[768px] min-w-[100%] max-w-[768px]">
       <div className="flex justify-center">
         <a
           href="https://www.linkedin.com/in/octavio-amietta-a797431a8/"

@@ -1,20 +1,17 @@
-// import pjson from "../../package.json";
-
 import { MediaParams } from "../interfaces";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MDkzN2Y3OWIyZjk4N2JkNTU1ZGU1MjM3YWJhZGIyMSIsInN1YiI6IjY2MGZlOWQ1MmQ1MzFhMDE3ZDdlYTEyNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Pxz2NdMG1dBubFXJy_Wp1d2I4xh_WxGsPkKD3lfLtIM",
+    Authorization: `Bearer ${API_KEY}`,
   },
 };
 
 export const services = {
   getList: async () => {
     const res = await fetch(
-      //   "https://api.themoviedb.org/3/trending/all/day?language=en-US",
       "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
       options
     )

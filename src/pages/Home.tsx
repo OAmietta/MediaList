@@ -2,28 +2,40 @@ import React, { useEffect } from "react";
 import EmblaCarousel from "../components/carousel/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import { useAppSelector } from "../app/hooks";
-// import { services } from "./api/services";
 import { selectMedias } from "../app/mediasSlice";
 import { HOME } from "../utils/constants";
+import Spinner from "../components/spinner/Spinner";
+import useMedia from "../hooks/useMedia";
 
 const Home: React.FC = () => {
   const medias = useAppSelector(selectMedias);
+  const { getTrendingMedia } = useMedia();
 
-  const OPTIONS: EmblaOptionsType = { dragFree: false, loop: true };
-  const SLIDE_COUNT = medias.mediaList.length;
-  const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
-  const DATA = medias.mediaList;
+  const options: EmblaOptionsType = { dragFree: false, loop: true };
+  const slideCount = medias.mediaList.length;
+  const slides = Array.from(Array(slideCount).keys());
+  const data = medias.mediaList;
+  const imgDetails = medias.imageDetails;
+
+  useEffect(() => {
+    getTrendingMedia();
+  }, []);
 
   return (
     <div className="flex flex-col justify-center items-center text-center max-w-screen-md bg-gradient">
-      <section className="flex sm:h-[76vh] h-screen sm:mt-[7rem] mt-0">
-        <EmblaCarousel
-          slides={SLIDES}
-          options={OPTIONS}
-          data={DATA}
-          origin={HOME}
-        />
-      </section>
+      {medias.loading ? (
+        <Spinner />
+      ) : (
+        <section className="flex sm:h-[76vh] h-screen sm:mt-[7rem] mt-0">
+          <EmblaCarousel
+            slides={slides}
+            options={options}
+            data={data}
+            origin={HOME}
+            imgDetails={imgDetails}
+          />
+        </section>
+      )}
     </div>
   );
 };

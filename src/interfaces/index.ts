@@ -26,7 +26,7 @@ export interface Image {
 export interface Medias {
   mediaList: MediaList[];
   similarMediaList: MediaList[];
-  image: Image;
+  imageDetails: Image;
   searchItem: boolean;
   loading: boolean;
 }

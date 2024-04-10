@@ -1,62 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import EmblaCarousel from "../components/carousel/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
-import { services } from "../api/services";
 import { useParams } from "react-router-dom";
 import { DETAILS } from "../utils/constants";
-import { Medias, ResponseMedia } from "../interfaces";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-// import { services } from "./api/services";
-import {
-  getSimilarMediaList,
-  selectMedias,
-  setSearchItem,
-  setLoading,
-} from "../app/mediasSlice";
+import { useAppSelector } from "../app/hooks";
+import { selectMedias } from "../app/mediasSlice";
 
 import Spinner from "../components/spinner/Spinner";
+import useDetails from "../hooks/useDetails";
 
 const Details: React.FC = () => {
   const { type, id } = useParams();
   const medias = useAppSelector(selectMedias);
-  const dispatch = useAppDispatch();
-  const [similarData, setSimilarData] = React.useState<
-    Medias["similarMediaList"]
-  >([]);
-  const [slides, setSlides] = React.useState<number[]>([]);
-  const pageData = medias.mediaList.find((item) => item.id.toString() == id);
-  const [data, setData] = React.useState(pageData);
+  const { similarData, slides, data, imgDetails } = useDetails(type, id);
 
-  const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true };
-
-  useEffect(() => {
-    if (medias.searchItem && type != undefined && id != undefined) {
-      dispatch(setSearchItem(false));
-      dispatch(setLoading(true));
-      services
-        .getMediaItem(type, parseInt(id))
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .then((res: any) => {
-          setData(res);
-          services
-            .getSimilarMedia(type, res.id)
-            .then((res: ResponseMedia) => {
-              dispatch(getSimilarMediaList(res.results));
-              setSlides(Array.from(Array(res.results.length).keys()));
-              setSimilarData(res.results);
-              dispatch(setLoading(false));
-            })
-            .catch((error) => {
-              dispatch(setLoading(false));
-              throw new Error("error", error);
-            });
-        })
-        .catch((error) => {
-          dispatch(setLoading(false));
-          throw new Error("error", error);
-        });
-    }
-  }, [id]);
+  const options: EmblaOptionsType = { dragFree: true, loop: true };
 
   return (
     <div className="flex flex-col text-center min-h-screen h-auto max-w-screen-md bg-gradient">
@@ -81,7 +39,7 @@ const Details: React.FC = () => {
             className={`flex mt-[38vh] min-h-[40vh] h-auto bg-[rgba(48,48,48,0.75)] text-left`}
           >
             <div
-              className={`sm:flex hidden ${
+              className={`sm:flex hidden h-[300px] w-[240px] min-w-[240px] ${
                 data?.poster_path == null &&
                 data?.backdrop_path == null &&
                 "sm:invisible"
@@ -116,10 +74,11 @@ const Details: React.FC = () => {
               <section className="mb-6">
                 <EmblaCarousel
                   slides={slides}
-                  options={OPTIONS}
+                  options={options}
                   data={similarData}
                   origin={DETAILS}
                   type={type}
+                  imgDetails={imgDetails}
                 />
               </section>
             </div>

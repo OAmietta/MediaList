@@ -8,7 +8,7 @@ body {
 
   background-image: url("../src/utils/cinema-pattern-dark.jpg");
   background-repeat: repeat;
-  background-size: contain;
+  background-size: cover;
 
   user-select: none;
   text-decoration: none;
@@ -26,108 +26,4 @@ code {
 
 .bg-gradient {
   background-image: linear-gradient(60deg, #ffffff42 0%, #ffffff31 100%);
-}
-
-.embla {
-  max-width: 48rem;
-  margin: auto;
-  --slide-spacing: 1rem;
-}
-.embla__viewport {
-  overflow: hidden;
-}
-.embla__container {
-  backface-visibility: hidden;
-  display: flex;
-  touch-action: pan-y;
-  margin-left: calc(var(--slide-spacing) * -1);
-}
-.embla__slide {
-  min-width: 0;
-  padding-left: var(--slide-spacing);
-  cursor: pointer;
-}
-
-.HOME {
-  flex: 0 0 80%;
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.DETAILS {
-  flex: 0 0 50%;
-  font-size: 1rem;
-  line-height: 2rem;
-}
-
-.embla__slide__img {
-  border-radius: 1rem;
-  display: block;
-  width: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.5s;
-}
-
-.embla__buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  align-items: center;
-  background-color: rgba(9, 9, 11, 0.349);
-  height: 8vh;
-}
-.embla__button {
-  -webkit-tap-highlight-color: rgba(230, 230, 230, 0.5);
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  touch-action: manipulation;
-  display: inline-flex;
-  text-decoration: none;
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  width: 3.5rem;
-  height: 3.5rem;
-  z-index: 1;
-  border-radius: 50%;
-  color: rgb(54, 49, 61);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.embla__button:hover {
-  transition: 0.3s ease;
-  transform: scale(1.2);
-  background-color: transparent;
-}
-
-.embla__button:disabled {
-  color: rgb(192, 192, 192);
-}
-.embla__button__svg {
-  width: 65%;
-  height: 65%;
-  color: rgb(255, 255, 255);
-}
-
-.embla__parallax {
-  border-radius: 1rem;
-  height: 100%;
-  overflow: hidden;
-}
-.embla__parallax__layer {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.embla__parallax__img {
-  max-width: none;
-  flex: 0 0 calc(115% + (var(--slide-spacing) * 2));
-  object-fit: cover;
 }

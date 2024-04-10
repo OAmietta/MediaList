@@ -11,11 +11,12 @@ import { Link } from "react-router-dom";
 import { HOME } from "../../utils/constants";
 import { useAppDispatch } from "../../app/hooks";
 import { setSearchItem } from "../../app/mediasSlice";
+import "./index.css";
 
 const TWEEN_FACTOR_BASE = 0.2;
 
 const EmblaCarousel = (props) => {
-  const { slides, options, data, origin, type } = props;
+  const { slides, options, data, origin, type, imgDetails } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const tweenFactor = useRef(0);
   const tweenNodes = useRef([]);
@@ -74,6 +75,20 @@ const EmblaCarousel = (props) => {
       });
     });
   }, []);
+
+  let posterSize = "";
+  let backdropSize = "";
+  let baseUrl = "";
+
+  if (imgDetails.images?.poster_sizes.length > 0) {
+    posterSize =
+      imgDetails.images.poster_sizes[imgDetails.images.poster_sizes.length - 1];
+    backdropSize =
+      imgDetails.images.backdrop_sizes[
+        imgDetails.images.backdrop_sizes.length - 1
+      ];
+    baseUrl = imgDetails.images.secure_base_url;
+  }
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -138,39 +153,42 @@ const EmblaCarousel = (props) => {
                         }`}
                         src={`${
                           backdropPath != null
-                            ? `https://image.tmdb.org/t/p/w780/${backdropPath}`
+                            ? `${baseUrl}${backdropSize}/${backdropPath}`
                             : posterPath != null
-                            ? `https://image.tmdb.org/t/p/w780/${posterPath}`
+                            ? `${baseUrl}${posterSize}/${posterPath}`
                             : "https://www.tigren.com/blog/wp-content/uploads/2021/10/404-error-page-not-found-magento.jpg"
                         }`}
                         alt="Background"
-                        loading="eager"
-                        rel="preload"
+                        // loading="eager"
+                        // rel="preload"
                       />
                     </div>
-
-                    <div className="sm:flex hidden absolute bottom-0 align-middle items-center bg-zinc-950 bg-opacity-90 min-w-[15%] min-h-10 h-auto justify-center rounded-tr-[1rem] rounded-bl-[1rem]">
+                    <div
+                      className={`flex absolute bottom-0 align-middle items-center bg-zinc-950 bg-opacity-90 min-w-[15%] min-h-10 h-auto justify-center rounded-tr-[1rem] rounded-bl-[1rem]`}
+                    >
                       <Star
                         className={
-                          "sm:h-4 h-3 max-h-4 sm:ml-2 m-1 sm:mr-1 text-yellow-300"
+                          "h-4 max-h-4 sm:ml-2 ml-1 sm:mr-1 text-yellow-300"
                         }
                       />
                       <p
                         className={`${
-                          origin == HOME ? "text-base" : "sm:text-sm text-xs"
+                          origin == HOME
+                            ? "sm:text-base text-sm"
+                            : "sm:text-sm text-xs"
                         }  text-zinc-200 font-normal`}
                       >
                         {data[index].vote_average.toFixed(2) + "%"}
                       </p>
                       <ThumbUp
                         className={
-                          "sm:h-4 h-3 max-h-4 sm:ml-2 m-1 sm:mr-1 text-blue-500"
+                          "h-4 max-h-4 sm:ml-2 ml-1 sm:mr-1 text-blue-500"
                         }
                       />
                       <p
                         className={`${
                           origin == HOME
-                            ? "text-base"
+                            ? "sm:text-base text-sm"
                             : "sm:text-sm text-xs sm:rounded-br-[1rem]"
                         }  text-zinc-200 font-normal mr-4`}
                       >
