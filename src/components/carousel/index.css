@@ -89,3 +89,21 @@
   flex: 0 0 calc(115% + (var(--slide-spacing) * 2));
   object-fit: cover;
 }
+
+.HOME {
+  flex: 0 0 80%;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.DETAILS {
+  flex: 0 0 50%;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .DETAILS {
+    flex: 0 0 80%;
+  }
+}

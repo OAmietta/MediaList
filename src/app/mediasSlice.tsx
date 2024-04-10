@@ -20,7 +20,7 @@ const initialState: Medias = {
 
 export const mediasSlice = createSlice({
   name: "medias",
-  initialState, // media state
+  initialState,
   reducers: {
     getImageData: (state, action) => {
       state.imageDetails = action.payload;

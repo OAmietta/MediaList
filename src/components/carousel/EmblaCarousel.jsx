@@ -8,7 +8,7 @@ import {
 } from "./EmblaCarouselArrowButtons";
 import { Star, ThumbUp } from "../../utils/icons";
 import { Link } from "react-router-dom";
-import { HOME } from "../../utils/constants";
+import { DETAILS, HOME } from "../../utils/constants";
 import { useAppDispatch } from "../../app/hooks";
 import { setSearchItem } from "../../app/mediasSlice";
 import "./index.css";
@@ -164,28 +164,32 @@ const EmblaCarousel = (props) => {
                       />
                     </div>
 
-                    <div className="sm:flex hidden absolute bottom-0 align-middle items-center bg-zinc-950 bg-opacity-90 min-w-[15%] min-h-10 h-auto justify-center rounded-tr-[1rem] rounded-bl-[1rem]">
+                    <div
+                      className={`flex absolute bottom-0 align-middle items-center bg-zinc-950 bg-opacity-90 min-w-[15%] min-h-10 h-auto justify-center rounded-tr-[1rem] rounded-bl-[1rem]`}
+                    >
                       <Star
                         className={
-                          "sm:h-4 h-3 max-h-4 sm:ml-2 m-1 sm:mr-1 text-yellow-300"
+                          "h-4 max-h-4 sm:ml-2 ml-1 sm:mr-1 text-yellow-300"
                         }
                       />
                       <p
                         className={`${
-                          origin == HOME ? "text-base" : "sm:text-sm text-xs"
+                          origin == HOME
+                            ? "sm:text-base text-sm"
+                            : "sm:text-sm text-xs"
                         }  text-zinc-200 font-normal`}
                       >
                         {data[index].vote_average.toFixed(2) + "%"}
                       </p>
                       <ThumbUp
                         className={
-                          "sm:h-4 h-3 max-h-4 sm:ml-2 m-1 sm:mr-1 text-blue-500"
+                          "h-4 max-h-4 sm:ml-2 ml-1 sm:mr-1 text-blue-500"
                         }
                       />
                       <p
                         className={`${
                           origin == HOME
-                            ? "text-base"
+                            ? "sm:text-base text-sm"
                             : "sm:text-sm text-xs sm:rounded-br-[1rem]"
                         }  text-zinc-200 font-normal mr-4`}
                       >

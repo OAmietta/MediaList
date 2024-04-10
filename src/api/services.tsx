@@ -1,5 +1,3 @@
-// import pjson from "../../package.json";
-
 import { MediaParams } from "../interfaces";
 
 const options = {
@@ -14,7 +12,6 @@ const options = {
 export const services = {
   getList: async () => {
     const res = await fetch(
-      //   "https://api.themoviedb.org/3/trending/all/day?language=en-US",
       "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
       options
     )
