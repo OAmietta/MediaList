@@ -159,8 +159,8 @@ const EmblaCarousel = (props) => {
                             : "https://www.tigren.com/blog/wp-content/uploads/2021/10/404-error-page-not-found-magento.jpg"
                         }`}
                         alt="Background"
-                        loading="eager"
-                        rel="preload"
+                        // loading="eager"
+                        // rel="preload"
                       />
                     </div>
                     <div

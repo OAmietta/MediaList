@@ -1,11 +1,11 @@
 import { MediaParams } from "../interfaces";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MDkzN2Y3OWIyZjk4N2JkNTU1ZGU1MjM3YWJhZGIyMSIsInN1YiI6IjY2MGZlOWQ1MmQ1MzFhMDE3ZDdlYTEyNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Pxz2NdMG1dBubFXJy_Wp1d2I4xh_WxGsPkKD3lfLtIM",
+    Authorization: `Bearer ${API_KEY}`,
   },
 };
 
