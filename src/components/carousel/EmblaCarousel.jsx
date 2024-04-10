@@ -8,7 +8,7 @@ import {
 } from "./EmblaCarouselArrowButtons";
 import { Star, ThumbUp } from "../../utils/icons";
 import { Link } from "react-router-dom";
-import { DETAILS, HOME } from "../../utils/constants";
+import { HOME } from "../../utils/constants";
 import { useAppDispatch } from "../../app/hooks";
 import { setSearchItem } from "../../app/mediasSlice";
 import "./index.css";
@@ -163,7 +163,6 @@ const EmblaCarousel = (props) => {
                         rel="preload"
                       />
                     </div>
-
                     <div
                       className={`flex absolute bottom-0 align-middle items-center bg-zinc-950 bg-opacity-90 min-w-[15%] min-h-10 h-auto justify-center rounded-tr-[1rem] rounded-bl-[1rem]`}
                     >

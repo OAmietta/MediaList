@@ -8,7 +8,7 @@ body {
 
   background-image: url("../src/utils/cinema-pattern-dark.jpg");
   background-repeat: repeat;
-  background-size: contain;
+  background-size: cover;
 
   user-select: none;
   text-decoration: none;
