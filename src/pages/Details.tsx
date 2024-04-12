@@ -39,7 +39,7 @@ const Details: React.FC = () => {
             className={`flex mt-[38vh] min-h-[40vh] h-auto bg-[rgba(48,48,48,0.75)] text-left`}
           >
             <div
-              className={`sm:flex hidden h-[300px] w-[240px] min-w-[240px] ${
+              className={`sm:flex hidden justify-center items-center h-[40vh]${
                 data?.poster_path == null &&
                 data?.backdrop_path == null &&
                 "sm:invisible"
@@ -51,7 +51,9 @@ const Details: React.FC = () => {
                 src={`${
                   data?.poster_path != null
                     ? `https://image.tmdb.org/t/p/w300/${data?.poster_path}`
-                    : `https://image.tmdb.org/t/p/w300/${data?.backdrop_path}`
+                    : data?.backdrop_path != null
+                    ? `https://image.tmdb.org/t/p/w300/${data?.backdrop_path}`
+                    : "https://www.tigren.com/blog/wp-content/uploads/2021/10/404-error-page-not-found-magento.jpg"
                 }`}
                 alt="Poster"
                 rel="preload"

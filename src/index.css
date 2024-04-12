@@ -27,3 +27,12 @@ code {
 .bg-gradient {
   background-image: linear-gradient(60deg, #ffffff42 0%, #ffffff31 100%);
 }
+
+.loading {
+  max-width: 40px;
+  max-height: 40px;
+  background-image: url("../src/utils/loading.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}

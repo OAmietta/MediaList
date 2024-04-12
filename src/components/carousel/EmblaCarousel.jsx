@@ -147,6 +147,17 @@ const EmblaCarousel = (props) => {
                             : data[index].name.toUpperCase()}
                         </h1>
                       </div>
+                      <div
+                        className={`-z-10 flex items-center justify-center ${
+                          origin == HOME
+                            ? "h-[29rem] w-[80vw]"
+                            : "h-[15rem] w-[50vw]"
+                        }`}
+                      >
+                        {/* <div
+                          className={`absolute loading max-w-10 z-50 max-h-10`}
+                        /> */}
+                      </div>
                       <img
                         className={`embla__slide__img embla__parallax__img ${
                           origin == HOME ? "h-[29rem]" : "h-[15rem]"
@@ -159,8 +170,7 @@ const EmblaCarousel = (props) => {
                             : "https://www.tigren.com/blog/wp-content/uploads/2021/10/404-error-page-not-found-magento.jpg"
                         }`}
                         alt="Background"
-                        // loading="eager"
-                        // rel="preload"
+                        loading="lazy"
                       />
                     </div>
                     <div
